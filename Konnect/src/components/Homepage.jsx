@@ -1,7 +1,9 @@
 import React from 'react'
 import Navbar from './Navbar'
 import Footer from './footer'
-export default function Homepage(){
+import SignIn from './auth/Signin'
+import Join from './Join'
+export default function Homepage({setMounted,setAuthUser}){
   return (<>
     <Navbar />
     <div className='flex flex-row my-10'>
@@ -19,7 +21,7 @@ export default function Homepage(){
             </div>
             <div className='w-1/2 flex flex-col relative'>
             <p className='text-right font-normal'> At <span className='text-customGreen'>Konnect</span>, we believe that students are the future workforce of our nation. They deserve digitized, impeccable education to ensure their success and growth.</p>
-            <button className='border-2 border-customGreen w-32 py-2 absolute bottom-0 right-0 rounded-md hover:bg-customGreen hover:border-white hover:text-white'>Join Us</button>
+            <button className='border-2 border-customGreen w-32 py-2 absolute bottom-0 right-0 rounded-md hover:bg-customGreen hover:border-white hover:text-white' onClick={()=>setMounted(<Join setAuthUser={setAuthUser} setMounted={setMounted}/>)}>Join Us</button>
             </div>
         </div>
     </div>
