@@ -7,7 +7,7 @@ export default function ClientNavbar({setMounted}){
         signOut(auth)
         .then(()=>{
             console.log('Signed out')
-            setMounted(<SignIn/>)
+            setMounted(<SignIn setMounted={setMounted}/>)
         })
         .catch((err)=> console.error(err))
         }

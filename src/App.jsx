@@ -19,7 +19,7 @@ function App() {
   return mounted? (
 mounted 
   ):
-  (<TutorPortal
+  (<Homepage
     setMounted={setMounted}
     setAuthUser={setAuthUser}
     />)

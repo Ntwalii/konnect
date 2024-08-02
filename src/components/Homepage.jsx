@@ -6,8 +6,10 @@ import Join from './Join'
 export default function Homepage({setMounted,setAuthUser}){
   return (<>
     <Navbar />
-    <div className='flex flex-row my-10'>
+    <div className='flex relative flex-row my-10'>
         <img src="/assets/tutors.png" className='w-full' alt="" />
+        <p className='absolute bottom-80 text-white w-full px-80 font-semibold text-2xl text-center'>
+        Connect with top tutors effortlessly using Konnect, the ultimate platform for personalized learning and academic success.</p>
         {/* <img src="./assets/connect.png" className='' alt="" /> */}
     </div>
     <div className='px-20'>
@@ -25,7 +27,7 @@ export default function Homepage({setMounted,setAuthUser}){
             </div>
         </div>
     </div>
-    <div className='bg-customGreen flex flex-row py-20 justify-between px-20'>
+    {/* <div className='bg-customGreen flex flex-row py-20 justify-between px-20'>
     <div>
     <div className='w-64 h-64 bg-white rounded-md'>
         card 1
@@ -44,7 +46,7 @@ export default function Homepage({setMounted,setAuthUser}){
     </div>
     <p>Happy birthday</p>
     </div>
-    </div>
+    </div> */}
 
     <div className='flex flex-row py-20 px-20'>
         <div className='w-1/2'>
