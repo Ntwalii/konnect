@@ -5,6 +5,7 @@ import { getFirestore, doc, setDoc,addDoc } from "firebase/firestore";
 import { db,rolesCollection } from "../../firebase";
 import UserPortal from "../UserPortal";
 import SignIn from "./Signin";
+import TutorPortal from '../TutorPortal'
 
 const Signup=(props)=>{
     const [email,setEmail]=React.useState("")
@@ -23,7 +24,7 @@ const Signup=(props)=>{
         .then(async(userCredential)=>{
             const userId = userCredential.user.uid;
             await setUserRole(userId, props.role);
-            props.setMounted(<UserPortal setMounted={props.setMounted}/>)
+            props.setMounted(props.role==="Student"?<UserPortal setMounted={props.setMounted}/>:<TutorPortal setMounted={props.setMounted}/>)
         })
         .catch((error)=>{
             console.log(error)
@@ -35,7 +36,7 @@ const Signup=(props)=>{
       <img src="./assets/logo.png" class="mx-auto lg:mx-0 lg:mt-0 " alt="" />
       <p class="font-bold text-3xl mt-10 lg:mt-16">Welcome</p>
       <p class="text-sm text-gray-500 mt-3">Welcome! Please enter your details to create an account</p>
-      <p class="text-md text-gray-500 mt-3">Already have an account? <button onClick={()=>props.setMounted(<SignIn setMounted={props.setMounted}/>)} className="text-customGreen">Sign in</button></p>
+      <p class="text-md text-gray-500 mt-3">Already have an account? <button onClick={()=>props.setMounted(<SignIn setMounted={props.setMounted} role={props.role}/>)} className="text-customGreen">Sign in</button></p>
     
       <form id="loginForm" onSubmit={signUp} class="flex flex-col mt-10 text-gray-500 font-medium">
         <label for="">E-mail:</label>

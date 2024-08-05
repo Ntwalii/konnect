@@ -1,10 +1,10 @@
 import React from 'react'
 import ClientNavbar from './ClientNavbar'
-export default function TutorPortal(){
+export default function TutorPortal({setMounted}){
     const [isHidden,setIsHidden]=React.useState(false)
 return(
     <div>
-    <ClientNavbar/>
+    <ClientNavbar setMounted={setMounted}/>
     <div className="px-20 flex flex-row ">
         <div className=' text-customGreen py-10 text-sm flex flex-col gap-4 w-1/2'>
     <p className='text-2xl font-semibold'>My Information</p>

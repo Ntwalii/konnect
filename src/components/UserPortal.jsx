@@ -1,7 +1,26 @@
 import React from "react"
 import ClientNavbar from "./ClientNavbar"
 import Details from "./details"
+import { onSnapshot, getFirestore, doc,getDoc, setDoc,addDoc } from "firebase/firestore"; 
+import { db,rolesCollection } from "../firebase";
 export default function UserPortal(props){
+    const [notes, setNotes] = React.useState([])
+    // const [currentUser,setUser]=React.useState(props.userCredential.user)
+    // const uid=currentUser.uid
+    // const email=currentUser.email
+    // console.log(uid,email)
+    React.useEffect(() => {
+        const unsubscribe=onSnapshot(rolesCollection,function(snapshot){
+          const notesArr = snapshot.docs.map(doc => ({
+              ...doc.data(),
+              id: doc.id
+          }))
+          setNotes(notesArr)
+         })
+         return unsubscribe
+      }, [])
+      console.log(notes)
+  
     return(
         <div>
         <ClientNavbar setMounted={props.setMounted}/>

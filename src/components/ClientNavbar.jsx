@@ -1,13 +1,14 @@
 import React from 'react'
 import { auth } from "../firebase";
 import SignIn from './auth/Signin';
+import Join from './Join';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 export default function ClientNavbar({setMounted}){
     const logOut=()=>{
         signOut(auth)
         .then(()=>{
             console.log('Signed out')
-            setMounted(<SignIn setMounted={setMounted}/>)
+            setMounted(<Join setMounted={setMounted}/>)
         })
         .catch((err)=> console.error(err))
         }

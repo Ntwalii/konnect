@@ -11,17 +11,15 @@ import UserPortal from '../UserPortal'
 import Details from '../details'
 import BookingForm from '../bookingForm'
 import Homepage from "../Homepage";
+import TutorPortal from "../TutorPortal";
 const SignIn=(props)=>{
-  
     const [email,setEmail]=React.useState("")
     const [password,setPassword]=React.useState("")
     const signIn=(e)=>{
         e.preventDefault()
         signInWithEmailAndPassword(auth,email,password)
-        .then((useCredential)=>{
-            console.log(useCredential)
-            // props.setAuthUser(useCredential)
-            props.setMounted(<UserPortal setMounted={props.setMounted} />)
+        .then((useCredential)=>{   
+            props.setMounted(props.role==="Student"?<UserPortal setMounted={props.setMounted}/>:<TutorPortal setMounted={props.setMounted}/>)
         })
         .catch((error)=>{
             console.log(error)
